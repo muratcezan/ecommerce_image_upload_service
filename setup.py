@@ -1,57 +1,48 @@
-"""Setup script for the Image Upload Service package.
+"""Setup module for the image_upload_service package.
 
-This module uses setuptools to package and distribute the
-Image Upload Service, which provides secure file upload handling
-for Flask applications.
+This module provides the configuration for packaging the image_upload_service
+library, which contains secure and configurable image upload handling for
+Flask-based ecommerce projects.
 """
 
+import os
 from setuptools import setup, find_packages
 
-# Package metadata constants
-PACKAGE_NAME = "image_upload_service"
-VERSION = "0.1.0"
-AUTHOR = "Murat Cezan"
-AUTHOR_EMAIL = "muratcezan@gmail.com"
-DESCRIPTION = (
-    "A helper service that provides secure and configurable "
-    "image upload handling for Flask-based web applications."
-)
-URL = "https://github.com/muratcezan/ecommerce_image_upload_service"
-PYTHON_REQUIRES = ">=3.8"
-INSTALL_REQUIRES = [
-    "Werkzeug>=2.0",
-    "Flask>=2.0",
-]
-CLASSIFIERS = [
-    "Development Status :: 5 - Production/Stable",
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Framework :: Flask",
-]
 
-
-def read_long_description() -> str:
-    """Read the long description from README.md if available."""
-    try:
-        with open("README.md", encoding="utf-8") as f:
+def read_long_description():
+    """Reads the README.md file if it exists, otherwise returns an empty string."""
+    readme_path = os.path.join(os.path.dirname(__file__), "README.md")
+    if os.path.exists(readme_path):
+        with open(readme_path, "r", encoding="utf-8") as f:
             return f.read()
-    except FileNotFoundError:
-        return DESCRIPTION
+    return ""
 
 
 setup(
-    name=PACKAGE_NAME,
-    version=VERSION,
-    author=AUTHOR,
-    author_email=AUTHOR_EMAIL,
-    description=DESCRIPTION,
+    name="image_upload_service",
+    version="0.1.0",
+    packages=find_packages(include=["image_upload_service", "image_upload_service.*"]),
+    install_requires=[
+        "Werkzeug>=2.0",
+        "Flask>=2.0",
+    ],
+    python_requires=">=3.8",
+    author="Murat CEZAN",
+    author_email="muratcezan@gmail.com",
+    description=(
+        "A helper service that provides secure and configurable "
+        "image upload handling for Flask-based web applications."
+    ),
     long_description=read_long_description(),
     long_description_content_type="text/markdown",
-    url=URL,
-    packages=find_packages(),
-    install_requires=INSTALL_REQUIRES,
-    python_requires=PYTHON_REQUIRES,
-    classifiers=CLASSIFIERS,
+    license="MIT",
+    url="https://github.com/muratcezan/ecommerce_image_upload_service",
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Framework :: Flask",
+    ],
     include_package_data=True,
 )
