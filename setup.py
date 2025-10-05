@@ -8,15 +8,15 @@ for Flask applications.
 from setuptools import setup, find_packages
 
 # Package metadata constants
-PACKAGE_NAME = "image-upload-service"
-VERSION = "1.0.0"
+PACKAGE_NAME = "image_upload_service"
+VERSION = "0.1.0"
 AUTHOR = "Murat Cezan"
-AUTHOR_EMAIL = "example@example.com"
+AUTHOR_EMAIL = "muratcezan@gmail.com"
 DESCRIPTION = (
     "A helper service that provides secure and configurable "
     "image upload handling for Flask-based web applications."
 )
-URL = "https://github.com/muratcezan/image-upload-service"
+URL = "https://github.com/muratcezan/ecommerce_image_upload_service"
 PYTHON_REQUIRES = ">=3.8"
 INSTALL_REQUIRES = [
     "Werkzeug>=2.0",
